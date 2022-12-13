@@ -17,5 +17,15 @@ class Item:
         if not (isinstance(quantity, int) and quantity >= 0):
             raise TypeError('Количество товара должно быть натуральным числом.')
 
-print(Item('phone', 18000, 5))
-print(Item('phone', 1, 0))
+class Phone(Item):
+    def __init__(self, name, price, quantity, broken_phones):
+       super().__init__(name, price, quantity)
+       self.broken_phones = broken_phones
+
+    def __str__(self):
+        return f'{self.__class__.__name__}({self.name}, {self.price}, {self.quantity}, {self.broken_phones})'
+
+
+
+print(Phone('phone', 18000, 5, 16))
+print(Phone('phone', 1, 0, 10))
